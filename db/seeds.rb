@@ -9,7 +9,7 @@ end
 
 User.all.each do |user|
   3.times do
-    post = user.posts.create!(title: Faker::Hacker.abbreviation, body: Faker::Lorem.paragraph)
+    post = user.posts.create!(title: "#{Faker::Hacker.adjective} #{Faker::Hacker.noun} #{Faker::Hacker.ingverb}", body: Faker::Lorem.paragraph)
 
     3.times do
       post.comments.create!(text: Faker::Hacker.say_something_smart, commenter: User.all.sample)

@@ -1,0 +1,4 @@
+<h3><%= @user.first_name %>'s Page</h3>
+
+<%= link_to "#{@user.first_name}'s Submissions", user_posts_path(@user) %>
+<%= link_to "#{@user.first_name}'s Comments", user_comments_path(@user) %>

@@ -1,0 +1,9 @@
+<h3>Sign Up</h3>
+<%= form_for @user do |f| %>
+<%= f.text_field :email, placeholder: "email@email.com" %>
+<%= f.text_field :first_name, placeholder: "First Name" %>
+<%= f.text_field :last_name, placeholder: "Last Name" %>
+<%= f.text_field :password, placeholder: "password" %>
+<%= f.text_field :password_confirmation, placeholder: "password" %>
+<%= f.submit "Create" %>
+<% end %>

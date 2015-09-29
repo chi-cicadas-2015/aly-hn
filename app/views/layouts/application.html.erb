@@ -7,8 +7,21 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<nav>
+  <h2><%= link_to("Hacker Newsish", root_path) %></h2>
+  <ul>
+    <% unless authenticated? %>
+    <li><%= link_to("Sign Up", new_user_path) %></li>
+    <li><%= link_to("Login", new_session_path) %></li>
+    <% else %>
+    <li><%= link_to(current_user.first_name, user_path(current_user)) %></li>
+    <li><%= link_to("Logout", session_path(session[:user_id]), method: :delete) %></li>
+    <% end %>
+  </ul>
+</nav>
+<div class="container">
 <%= yield %>
-
+</div>
+<footer><p>created by @alycit</p></footer>
 </body>
 </html>
