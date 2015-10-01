@@ -7,10 +7,11 @@ Rails.application.routes.draw do
     resources :comments, only: [:index]
   end
 
-  resources :posts, only: [:index, :show, :new, :create] do
+  resources :posts, only: [:index, :show, :new, :create, :edit, :update] do
     resources :comments, only: [:new, :create]
   end
 
+  get '/not_authorized' => "users#not_authorized"
   root 'posts#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
