@@ -20,7 +20,7 @@ class CommentsController < ApplicationController
     if @comment.save
       @post.comments << @comment
       current_user.comments << @comment
-      redirect_to root_path
+      redirect_to post_path(@post)
     else
       render :new
     end

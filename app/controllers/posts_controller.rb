@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   before_filter :authorize, :only => [:create, :new]
 
   def index
-    @posts = Post.all
+    @posts = Post.order("created_at desc")
   end
 
   def show
@@ -21,7 +21,7 @@ class PostsController < ApplicationController
 
     if @post.save
       current_user.posts << @post
-      redirect_to root_path
+      redirect_to post_path(@post)
     else
       render :new
     end
@@ -29,6 +29,6 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:title, :body)
+    params.require(:post).permit(:title, :body, :all_tags)
   end
 end

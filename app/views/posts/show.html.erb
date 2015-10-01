@@ -8,4 +8,13 @@
   <% end %>
 </ul>
 
+<h4>Tags</h4>
+<ul>
+  <% @post.tags.each do |tag| %>
+  <li><%= tag.text %></li>
+  <% end %>
+</ul>
+
+<% if authenticated? %>
 <%= link_to "Add Comment", new_post_comment_path(@post) %>
+<% end %>
