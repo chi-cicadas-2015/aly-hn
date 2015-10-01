@@ -32,7 +32,3 @@ class Post < ActiveRecord::Base
     new_tags.each { |tag| self.tags.build(text: tag) }
   end
 end
-
-
-# need to add harrison in new_tags
-# need to associate pair from existing tags
