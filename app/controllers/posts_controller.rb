@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   include ApplicationHelper
+  include PostHelper
 
   before_filter :authorize, :only => [:create, :new, :edit, :update]
   before_filter :find_post, :only => [:show, :edit, :update]
@@ -29,13 +30,26 @@ class PostsController < ApplicationController
   end
 
   def edit
+    if request.xhr?
+      render :edit, layout: false
+    else
+      render :edit
+    end
   end
 
   def update
     if @post.update_attributes(post_params)
-      redirect_to post_path(@post)
+      if request.xhr?
+        render json: @post, include: :tags
+      else
+        redirect_to post_path(@post)
+      end
     else
-      render :edit
+      if request.xhr?
+        render :edit, layout: false
+      else
+        render :edit
+      end
     end
   end
 
